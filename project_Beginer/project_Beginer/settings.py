@@ -67,6 +67,21 @@ ROBOTSTXT_OBEY = True
 #ITEM_PIPELINES = {
 #    'project_Beginer.pipelines.SomePipeline': 300,
 #}
+# enable imagePipeline
+ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
+# set dir to save image
+IMAGES_STORE = "../image_Storage/"
+# so ngay delay cua image expiration
+IMAGES_EXPIRES = 90
+
+IMAGES_THUMBS = {
+    'small': (800, 600),
+    'big': (1920, 1080),
+}
+
+
+IMAGES_MIN_HEIGHT = 600
+IMAGES_MIN_WIDTH = 800
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
