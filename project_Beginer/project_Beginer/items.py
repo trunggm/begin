@@ -24,3 +24,10 @@ class DantriItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     
+    
+class TruyenFullItem(scrapy.Item):
+    name = scrapy.Field()
+    chap = scrapy.Field()
+    auth = scrapy.Field()
+    content = scrapy.Field()
+    
