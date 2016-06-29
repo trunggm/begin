@@ -5,16 +5,16 @@ import scrapy
 import unicodedata
 from project_Beginer.supportlib import checkLink, checkFile
 
-#from project_Beginer.items import TruyenFullIte
+from project_Beginer.items import TruyenFullItem
 
 
 class TruyenFullSpider(scrapy.Spider):
-    name = "truyentranhtuan"
+    name = "truyentranhnet"
     
-    allowed_domains = ["truyentranhtuan.com"]
+    allowed_domains = ["truyentranh.net"]
     
     start_urls = [
-        "http://truyentranhtuan.com/",   
+        "http://truyentranh.net/",   
     ]
     
     
@@ -40,14 +40,13 @@ class TruyenFullSpider(scrapy.Spider):
                 link = unicodedata.normalize('NFKD', link).encode('ascii','ignore')
             if checkLink(link)!=2:
                 if(checkLink(link)==1):
-                    link=url+link
+                    link="http://truyentranh.net"+link
                 # kiem tra neu link nay chu co trong arrayData thi them no vao trong 
                 if link not in arrayData:
-                    if link.find("truyentranhtuan.com")!=-1:
+                    if link.startswith("http://truyentranh.net") and link.find("dang-nhap.html")==-1:
                         arrayData.append(link)
                         arrayNew.append(link)
                         appenFile.write(link+"\n")
-                    
         appenFile.close()
         for new in arrayNew:
             yield scrapy.Request(new, callback=self.parse)

@@ -31,6 +31,8 @@ class TruyenFullItem(scrapy.Item):
     auth = scrapy.Field()
     content = scrapy.Field()
     
+    
+    
 class ImageItem(scrapy.Item):
     image_urls = scrapy.Field()
     image_name = scrapy.Field()
