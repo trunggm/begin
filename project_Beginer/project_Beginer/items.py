@@ -8,6 +8,44 @@
 import scrapy
 
 
+# tao moi class item chua moi truyen la 1 object:
+#   - ten truyen
+
+class TruyenItem(scrapy.Item):
+    # ten truyen
+    ten = scrapy.Field()
+    # poster truyen    
+    hinh = scrapy.Field()
+    # tac gia cua truyen
+    tacgia = scrapy.Field()
+    # list cac the loai
+    theloai = scrapy.Field()
+    # nguon truyen
+    nguon = scrapy.Field()
+    # trang thai: full, dang ra, khong ro
+    trangthai = scrapy.Field()
+    # mota truyen:
+    mota = scrapy.Field()
+    # danhgia
+    danhgia = scrapy.Field()
+    # so luot dang gia:
+    soluot = scrapy.Field()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class ProjectBeginerItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
@@ -38,3 +76,34 @@ class ImageItem(scrapy.Item):
     image_name = scrapy.Field()
     
                                             
+class StackItem(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    
+    
+    
+class TruyenTruyenFullItem(scrapy.Item):
+    tentruyen = scrapy.Field()
+    hinhanh = scrapy.Field()
+    tacgia = scrapy.Field()
+    theloai = scrapy.Field()
+    nguon = scrapy.Field()
+    trangthai = scrapy.Field()
+    mota = scrapy.Field()
+    danhgia = scrapy.Field()
+    soluong = scrapy.Field()
+    
+class ChapTruyenFullItem(scrapy.Item):
+    tentruyen = scrapy.Field()
+    chap = scrapy.Field()
+    noidung = scrapy.Field()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

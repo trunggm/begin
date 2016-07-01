@@ -19,9 +19,10 @@ class ImageTestSpider(scrapy.Spider):
     # dinh nghia mot ham parse
     def parse(self, response):
         item = ImageItem()
-        item["image_urls"] = arrayTest[0]
-        item["image_name"] = "pic one"
-        yield item        
+        for i in range(len(arrayTest)):
+            item["image_urls"] = arrayTest[i]
+            item["image_name"] = "pic"+str(i)
+            yield item        
         
         
     

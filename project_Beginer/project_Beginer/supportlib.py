@@ -15,3 +15,15 @@ def checkFile(filename):
     except IOError:
       return 0
 
+
+def getchaper(str):
+    arr = str.split(' ')
+    quyen = 0
+    chap = 0
+    if str.find('quyển')!=-1:
+        quyen = int(arr[1])
+        chap = int(arr[3])
+    else:
+        chap = arr[1]
+    return (quyen, chap)
+        

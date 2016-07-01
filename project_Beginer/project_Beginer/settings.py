@@ -68,20 +68,17 @@ ROBOTSTXT_OBEY = True
 #    'project_Beginer.pipelines.SomePipeline': 300,
 #}
 # enable imagePipeline
-ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
+#ITEM_PIPELINES = {
+#   'project_Beginer.pipelines.MyImagesPipeline': 1,
+#}
 # set dir to save image
-IMAGES_STORE = "../image_Storage/"
-# so ngay delay cua image expiration
-IMAGES_EXPIRES = 90
+#IMAGES_STORE = "C:/Users/thienloi/Documents/Project_Scrapy/project_Beginer/images"
 
-IMAGES_THUMBS = {
-    'small': (800, 600),
-    'big': (1920, 1080),
+# pipeline cho pymongo
+ITEM_PIPELINES = {
+    'project_Beginer.pipelines.MongoDBPipeline': 300,
 }
 
-
-IMAGES_MIN_HEIGHT = 600
-IMAGES_MIN_WIDTH = 800
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -103,3 +100,10 @@ IMAGES_MIN_WIDTH = 800
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# setting server database:
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "test1"
+MONGODB_COLLECTION = "tentruyen"
+
