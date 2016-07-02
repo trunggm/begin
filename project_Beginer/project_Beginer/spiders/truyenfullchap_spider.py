@@ -4,7 +4,7 @@ import scrapy
 # thu vien decode
 import unicodedata
 import string
-from project_Beginer.supportlib import checkLink, checkFile
+from project_Beginer.supportlib import checkLink, checkFile, getchaper
 
 from project_Beginer.items import ChapTruyenFullItem
 
@@ -20,7 +20,7 @@ class TruyenFullSpider(scrapy.Spider):
         data = f.read()
         f.close()
         self.start_urls = data.split("\n")
-
+        #self.start_urls = ['http://truyenfull.vn/nguoi-dan-ong-kien-cuong/chuong-3/']
     # tentruyen = scrapy.Field()
     # hinhanh = scrapy.Field()
     # tacgia = scrapy.Field()
@@ -35,9 +35,22 @@ class TruyenFullSpider(scrapy.Spider):
     
     def parse(self, response):
         item = ChapTruyenFullItem()
-        item['tentruyen'] = response.xpath('//*[@id="wrap"]/div[2]/div/div/a[2]/text()').extract()
-        item['noidung'] = response.xpath('//*[@id="wrap"]/div[2]/div/div/div[4]/text()').extract()
-        item['chap'] = response.xpath('//*[@id="wrap"]/div[2]/div/div/h2/a/@title').extract()[0]
+        # lay ten chuyen
+        item['tentruyen'] = response.xpath('//*[@id="wrap"]/div[2]/div/div/a[2]/text()').extract()[0]
+        #lay noi dung cua chap
+        noidung = response.xpath('//*[@id="wrap"]/div[2]/div/div/div[4]/text()').extract()
+        item['noidung'] = ''.join(noidung)
+        # lay ten cua chap
+        item['tenchap'] = response.xpath('//*[@id="wrap"]/div[2]/div/div/h2/a/@title').extract()[0]
+        
+        url = response.url     
+        #lay ten chuyen
+        item['truyen'] = url.split('/')[3]
+        # lay ten chap 
+        item['chap']= url.split('/')[4]
+        # chap so la 1 tuple
+        #item['chapso'] = getchaper(item['tenchap'])
+        
         
         yield item
 

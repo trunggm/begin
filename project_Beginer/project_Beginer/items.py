@@ -31,6 +31,16 @@ class TruyenItem(scrapy.Item):
     # so luot dang gia:
     soluot = scrapy.Field()
 
+# TTN = truyentranhnet
+class TTNImageItem(scrapy.Item):
+    # source cua image dung de crawl    
+    image_urls = scrapy.Field()
+    # ten cuar image
+    image_name = scrapy.Field()
+    # ten truyen
+    truyen = scrapy.Field()
+    # chap cua image
+    chap = scrapy.Field()
 
 
 
@@ -72,9 +82,15 @@ class TruyenFullItem(scrapy.Item):
     
     
 class ImageItem(scrapy.Item):
+    #ten = scrapy.Field()
+    #chap = scrapy.Field()
+    page_title = scrapy.Field()
     image_urls = scrapy.Field()
-    image_name = scrapy.Field()
-    
+    images = scrapy.Field()
+    #image_urls = scrapy.Field()
+    #image_name = scrapy.Field()
+    #image_paths = scrapy.Field()
+    #images = scrapy.Field()
                                             
 class StackItem(scrapy.Item):
     title = scrapy.Field()
@@ -95,8 +111,12 @@ class TruyenTruyenFullItem(scrapy.Item):
     
 class ChapTruyenFullItem(scrapy.Item):
     tentruyen = scrapy.Field()
+    tenchap = scrapy.Field()
+    truyen = scrapy.Field()
     chap = scrapy.Field()
+    chapso = scrapy.Field()    
     noidung = scrapy.Field()
+    
     
     
     

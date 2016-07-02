@@ -69,10 +69,10 @@ ROBOTSTXT_OBEY = True
 #}
 # enable imagePipeline
 #ITEM_PIPELINES = {
-#   'project_Beginer.pipelines.MyImagesPipeline': 1,
+#    'project_Beginer.pipelines.MyImagesPipeline': 1,
 #}
 # set dir to save image
-#IMAGES_STORE = "C:/Users/thienloi/Documents/Project_Scrapy/project_Beginer/images"
+#IMAGES_STORE = "D:/img"
 
 # pipeline cho pymongo
 ITEM_PIPELINES = {
@@ -105,5 +105,5 @@ ITEM_PIPELINES = {
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "test1"
-MONGODB_COLLECTION = "tentruyen"
+MONGODB_COLLECTION = "chaptruyen"
 

@@ -6,26 +6,32 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import scrapy
 import pymongo
+import string
 
 from scrapy.conf import settings
-
-#from scrapy.contrib.pipeline.images import ImagesPipeline
+from scrapy.contrib.pipeline.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 from scrapy import log
 
 '''
 class MyImagesPipeline(ImagesPipeline):
-
+    def file_path(self, request, response=None, info=None):
+        return string.split(request.url, '/')[-3] + '/' + string.split(request.url, '/')[-1]
+    
     def get_media_requests(self, item, info):
         yield scrapy.Request(item['image_urls'])
+    
+    
 
     def item_completed(self, results, item, info):
-        image_paths = [x['path'] for ok, x in results if ok]
+        if results[0]:
+            image_paths = item['image_name']+'.jpg'
         if not image_paths:
             raise DropItem("Item contains no images")
         item['image_paths'] = image_paths
         return item
-'''     
+'''
+# ghi du lieu vao mongodb   
 
 class MongoDBPipeline(object):
 
